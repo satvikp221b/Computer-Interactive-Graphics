@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MP2 (satvikp3)</title>
+<meta charset="utf-8"> 
+<script id="shader-vs" type="x-shader/x-vertex">
+uniform mat4 uMvMatrix;
+
+attribute vec4 aVertexColor;
+attribute vec3 aVertexPosition;
+
+varying vec4 vColor;
+
+void main(void) {
+
+    gl_Position = uMvMatrix*vec4(aVertexPosition, 1.0);
+    vColor = aVertexColor;
+}
+</script><script id="shader-fs" type="x-shader/x-fragment">
+
+precision highp float;
+varying vec4 vColor;
+void main(void) {
+        gl_FragColor = vColor;
+ }
+</script>
+<script id="shader-vs_psy" type="x-shader/x-vertex">
+    attribute vec4 aVertexPosition_psy;
+    void main() {
+        gl_Position = aVertexPosition_psy;
+    }
+</script>
+<script id="shader-fs_psy" type="x-shader/x-fragment">
+
+    precision mediump float;
+    uniform float time_psy;
+
+    void main() {
+        float x = gl_FragCoord.x / 100.0;
+        float y = gl_FragCoord.y / 100.0;
+        float r = sin(time_psy + x) * 0.5 + 0.5;
+        float g = sin(time_psy + y) * 0.5 + 0.5;
+        float b = sin(time_psy + x + y) * 0.5 + 0.5;
+        gl_FragColor = vec4(r, g, b, 1);
+    }
+</script>
+<script id="shader-vs_coll" type="x-shader/x-vertex">
+    attribute vec4 aVertexPosition_coll;
+    void main() {
+        gl_Position = aVertexPosition_coll;
+    }
+    </script>
+    <script id="shader-fs_coll" type="x-shader/x-fragment">
+        precision mediump float;
+        uniform vec4 vColor_coll;
+        void main() {
+            gl_FragColor = vColor_coll;
+        }
+    </script>
+<script id="shader-vs_mouse" type="x-shader/x-vertex">
+    attribute vec3 aVertexPosition_mouse;
+    attribute vec4 aVertexColor_mouse;
+    uniform mat4 uModelViewMatrix_mouse;
+    uniform mat4 uProjectionMatrix_mouse;
+    varying lowp vec4 vColor_mouse;
+    void main() {
+        gl_Position = uProjectionMatrix_mouse * uModelViewMatrix_mouse * vec4(aVertexPosition_mouse, 1.0);
+        vColor_mouse = aVertexColor_mouse;
+    }
+</script>
+<script id="shader-fs_mouse" type="x-shader/x-fragment">
+    varying lowp vec4 vColor_mouse;
+    void main() {
+        gl_FragColor = vColor_mouse;
+    }
+</script>
+<script id="shader-vs_stickman" type="x-shader/x-vertex">
+    attribute vec2 aVertexPosition_stick;
+    uniform mat4 uProjectionMatrix_stick;
+    uniform mat4 uModelViewMatrix_stick;
+
+    void main() {
+        gl_Position = uProjectionMatrix_stick * uModelViewMatrix_stick * vec4(aVertexPosition_stick, 0.0, 1.0);
+    }
+</script>
+<script id="shader-fs_stickman" type="x-shader/x-fragment">
+    void main() {
+        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+    }
+</script>
+<script id="shader-vs_gpu" type="x-shader/x-vertex">
+    attribute vec3 aVertexPosition_gpu;
+    attribute vec4 aVertexColor_gpu;
+    uniform mat4 uProjectionMatrix_gpu;
+    uniform mat4 uModelViewMatrix_gpu;
+    uniform float uTime_gpu;
+
+
+    void main() {
+        // Add a time-varying transformation to each vertex position
+        vec3 newPosition = aVertexPosition_gpu;
+        newPosition.x += sin(uTime_gpu + float(gl_VertexID)) * 0.1;
+        newPosition.y += cos(uTime_gpu + float(gl_VertexID)) * 0.1;
+  
+        gl_Position = uProjectionMatrix_gpu * uModelViewMatrix_gpu * vec4(newPosition, 1.0);
+    }
+</script>
+</script><script id="shader-fs_gpu" type="x-shader/x-fragment">
+
+    precision highp float;    
+    varying vec4 aVertexColor_gpu;
+    void main(void) {
+            gl_FragColor = aVertexColor_gpu;
+     }
+</script>
+<script id="shader-vs_cube" type="x-shader/x-vertex">
+attribute vec3 aVertexPosition_cube;
+attribute vec3 aVertexColor_cube;
+uniform mat4 uModelViewMatrix_cube;
+uniform mat4 uProjectionMatrix_cube;
+varying lowp vec3 vColor_cube;
+
+void main() {
+  gl_Position = uProjectionMatrix_cube* uModelViewMatrix_cube * vec4(aVertexPosition_cube, 1.0);
+  vColor_cube= aVertexColor_cube;
+}
+</script>
+<script id="shader-fs_cube" type="x-shader/x-fragment">
+    varying lowp vec3 vColor_cube;
+
+    void main() {
+      gl_FragColor = vec4(vColor_cube, 1.0);
+    }
+
+</script>
+<script src="gl-matrix-min.js"></script>
+<script type='text/javascript' src="MP2_Final.js"></script></head>
+<body>
+  <canvas id="myGLCanvas" width="500" height="500" style="border: 1px solid black;"></canvas>
+<p>
+    <label><input type="radio" name="example" value="illinois" checked />Illinois Logo</label>
+    <br/>
+    <label><input type="radio" name="example" value="cube" />Rotating Cube Logo (Required 2)</label>
+    <br/>
+    <label><input type="radio" name="example" value="psychedellic"/>Psychedelic</label>
+    <br/>
+    <label><input type="radio" name="example" value="collision"/>Collision</label>
+    <br/>
+    <label><input type="radio" name="example" value="mouse"/>Mouse</label>
+    <br/>
+    <label><input type="radio" name="example" value="stickman"/>Stickman</label>
+    <br/>
+    <label><input type="radio" name="example" value="illinois_GPU"/>Illinois Logo - GPU</label>
+</p>
+</body>
+</html>
