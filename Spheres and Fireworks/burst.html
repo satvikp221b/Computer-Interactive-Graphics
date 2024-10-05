@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>MP5-satvip3 (Burst)</title>
+    <meta charset="utf-8">
+<script id="shader-vs" type="x-shader/x-vertex">#version 300 es
+    precision highp float;
+
+    in vec3 aVertexPosition;
+    in vec3 vertexNormal;
+    
+    uniform mat4 uModelViewMatrix;
+    uniform mat4 uProjectionMatrix;
+    uniform mat3 normalMatrix;
+    
+    out vec3 fragPosition;
+    out vec3 fragNormal;
+    
+    void main(void) {
+        fragPosition = (uModelViewMatrix * vec4(aVertexPosition, 1.0)).xyz;
+        fragNormal = normalize(normalMatrix * vertexNormal);
+        gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(aVertexPosition, 1.0);
+    }
+    </script>
+    
+    <script id="shader-fs" type="x-shader/x-fragment">#version 300 es
+        //Lambertian Shading
+        precision highp float;
+
+        in vec3 fragPosition;
+        in vec3 fragNormal;
+        
+        uniform vec3 kDiffuse;
+        uniform vec3 lightPosition;
+        uniform vec3 ambientLightColor;
+        uniform vec3 diffuseLightColor;
+        
+        out vec4 fragColor;
+        
+        void main(void) {
+            vec3 nFragNormal = normalize(fragNormal);
+            vec3 lightDir = normalize(lightPosition - fragPosition);
+            float diffuseWeight = max(dot(nFragNormal, lightDir), 0.0);
+            fragColor = vec4(kDiffuse * diffuseLightColor * diffuseWeight, 1.0);
+        }
+        </script>
+
+        <script src="gl-matrix-min.js"></script>
+        <script src="Sphere.js"></script>
+        <script src="MP5.js"></script></head>
+<body onload="startup()">
+    <canvas id="glCanvas" width="600" height="600"></canvas>
+    <div id="fps" style="position:fixed; bottom:0; right:0; display:table"></div>
+</body>
+</html>
