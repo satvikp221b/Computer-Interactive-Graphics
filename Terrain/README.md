@@ -9,3 +9,5 @@ I completed the following parts:
 - Height-based Color Ramp: I implemented a color ramp based on world-space height, smoothly interpolating multiple colors in the fragment shader.
 - Torus: I created a torus with user options for the number of rings, points per ring, and a control for puffiness (such as inner/outer radius).
 - Shiny: I implemented specular highlights where the light color affected the highlights, creating a shiny effect.
+
+[Link to project ](https://satvikp221b.github.io/Computer-Interactive-Graphics/MP3.html)
