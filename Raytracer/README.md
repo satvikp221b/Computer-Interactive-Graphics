@@ -24,4 +24,11 @@ I completed the following features:
 - Depth of Field: I simulated depth of field using a lens and focal depth, where objects closer to the focal point appear sharp, and those farther away are blurred.
 
 Some examples of generated images are 
-![Panaroma](output/mpray_panorama.png)  ![Many Spheres](output/mpray_tenthousand.png)
+<div style="display: flex; justify-content: space-between;">
+    <img src="output/mpray_panorama.png" alt="Panorama" style="width: 45%; height: 200px;"/>
+    <img src="output/mpray_tex.png" alt="Earth Tex" style="width: 45%; height: 200px;"/>
+</div>
+<div style="margin-top: 10px;">
+    <img src="output/mpray_tenthousand.png" alt="Many Spheres"/>
+</div>
+
