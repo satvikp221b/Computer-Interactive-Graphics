@@ -25,8 +25,8 @@ I completed the following features:
 
 Some examples of generated images are 
 <div style="display: flex; justify-content: space-between;">
-    <img src="output/mpray_panorama.png" alt="Panorama" style="width: 45%; height: 200px;"/>
-    <img src="output/mpray_tex.png" alt="Earth Tex" style="width: 45%; height: 200px;"/>
+    <img src="output/mpray_panorama.png" alt="Panorama"/>
+    <img src="output/mpray_tex.png" alt="Earth Tex"/>
 </div>
 <div style="margin-top: 10px;">
     <img src="output/mpray_tenthousand.png" alt="Many Spheres"/>
