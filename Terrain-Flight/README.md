@@ -6,3 +6,5 @@ I completed the following features:
 - Vehicular movement: Added a toggle with the "G" key that switches between flight mode and on-the-ground mode. In on-the-ground mode, the camera remains at a fixed height above the terrain and moves smoothly across the terrain surface, adjusting to different heights.
 - Fog: Added a fog toggle with the "F" key that smoothly transitions between no-fog mode and fog mode. In fog mode, distant fragments are drawn closer to the background fog color, creating an atmospheric effect.
 - OBJ loading: Successfully loaded OBJ files, both basic and custom, displaying objects at the center of the terrain. My code handles both position-only and position-and-color OBJ files, with support for additional attributes like surface normals and texture coordinates. Although, it gets wonky/buggy sometimes depending on the OBJ file.
+
+[Link to project](https://satvikp221b.github.io/Computer-Interactive-Graphics/MP4.html)
