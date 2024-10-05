@@ -4,8 +4,8 @@ The required part of the assignment involved generating a patch of fractal terra
 
 I completed the following parts:
 
-Terrain: I generated a working terrain patch using the Faulting Method.
-Rocky Cliffs: I added a material in the fragment shader for areas steeper than a specific cutoff, simulating rocky cliffs.
-Height-based Color Ramp: I implemented a color ramp based on world-space height, smoothly interpolating multiple colors in the fragment shader.
-Torus: I created a torus with user options for the number of rings, points per ring, and a control for puffiness (such as inner/outer radius).
-Shiny: I implemented specular highlights where the light color affected the highlights, creating a shiny effect.
+- Terrain: I generated a working terrain patch using the Faulting Method.
+- Rocky Cliffs: I added a material in the fragment shader for areas steeper than a specific cutoff, simulating rocky cliffs.
+- Height-based Color Ramp: I implemented a color ramp based on world-space height, smoothly interpolating multiple colors in the fragment shader.
+- Torus: I created a torus with user options for the number of rings, points per ring, and a control for puffiness (such as inner/outer radius).
+- Shiny: I implemented specular highlights where the light color affected the highlights, creating a shiny effect.
