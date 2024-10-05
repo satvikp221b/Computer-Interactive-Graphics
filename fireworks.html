@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MP5 (satvikp3) - Fireworks</title>
+<meta charset="utf-8"> 
+<script id="shader-vs" type="x-shader/x-vertex">
+    attribute vec4 a_position;
+    uniform mat4 u_modelViewProjectionMatrix;
+    void main() {
+        gl_Position = u_modelViewProjectionMatrix * a_position;
+        gl_PointSize = 4.0;
+    }
+</script>
+<script id="shader-fs" type="x-shader/x-fragment">
+    precision mediump float;
+    uniform vec4 u_color;
+    void main() {
+        gl_FragColor = u_color;
+    }
+</script>
+<script src="gl-matrix-min.js"></script>
+<script type='text/javascript' src="fireworks.js"></script>
+</head>
+<body onload="startup()">
+    <canvas id="myGLCanvas" width="1500" height="600" style="border: 1px solid black;"></canvas>
+</body>
+</html>
+
