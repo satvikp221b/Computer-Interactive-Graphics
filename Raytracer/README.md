@@ -31,4 +31,4 @@ Some examples of generated images are
 <div style="margin-top: 10px;">
     <img src="output/mpray_tenthousand.png" alt="Many Spheres"/>
 </div>
-
+The many spheres took close to 40 minutes on my PC to render, but the timing could be improved massively after using a BVH which i haven't gotten around to implementing yet.
