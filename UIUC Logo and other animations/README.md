@@ -11,3 +11,5 @@ Animations that i submitted include:
 - Collision detection
 - Mouse Movement interaction
 - Stickman animation.
+
+[ Link to project ](https://satvikp221b.github.io/Computer-Interactive-Graphics/MP2.html)
